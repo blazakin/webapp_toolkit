@@ -11,16 +11,19 @@ def index():
 
 
 # --- Dashboard Pages ---
+@app.route('/ham', methods=['GET'])
 @app.route('/Ham', methods=['GET'])
 def ham_dashboard():
     return render_template('dashboards/ham_dashboard.html')
 
 
 # --- Tool Pages ---
+@app.route('/taskapp', methods=['GET'])
 @app.route('/TaskApp', methods=['GET'])
 def task_app():
     return render_template('tools/task_app.html')
 
+@app.route('/s/<string:key>', methods=['GET', 'POST'])
 @app.route('/S/<string:key>', methods=['GET', 'POST'])
 def url_expand(key=None):
     if request.method != 'POST':
@@ -42,7 +45,8 @@ def url_expand(key=None):
             return jsonify({"status": "key_taken", "received": recv_key}), 200
         except ValueError:
             return jsonify({"status": "too_many_keys", "received": recv_key}), 200
-        
+
+@app.route('/s', methods=['GET', 'POST'])        
 @app.route('/S', methods=['GET', 'POST'])
 def url_shortener():
     if request.method == 'GET':
@@ -59,17 +63,19 @@ def url_shortener():
             return jsonify({"status": "too_many_keys", "received": recv_key}), 200
 
 
-
+@app.route('/qr', methods=['GET'])
 @app.route('/QR', methods=['GET'])
 def qr_code():
     return render_template('tools/qr_code_gen.html')
 
 
 # --- Portfolio Pages ---
+@app.route('/portfolio', methods=['GET'])
 @app.route('/Portfolio', methods=['GET'])
 def portfolio():
     return render_template('portfolio.html')
 
+@app.route('/sps24', methods=['GET'])
 @app.route('/SPS24', methods=['GET'])
 def sps24():
     return render_template('sps24.html')
