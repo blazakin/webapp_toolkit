@@ -17,6 +17,10 @@ function active_page(page_name) {
     nav_pg_link.classList.add("active")
 }
 
+function maximize_image(e) {
+    (e.currentTarget).classList.toggle("fullscreen_img")
+}
+
 
 // Will give browser a fit first time the user does this due to spam protection
 function test_open2() {
