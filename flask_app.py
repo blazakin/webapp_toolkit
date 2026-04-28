@@ -1,16 +1,3 @@
-# from flask import Flask
-# import bleach
-# import os
-
-# base_path = os.path.dirname(os.path.realpath(__file__))
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def hello_world():
-#     return 'Hello world!'
-
-
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
