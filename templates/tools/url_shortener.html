@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}URL Shortener{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='shorten_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<script>active_page("shorten")</script>
+<div class="shorten-container">
+<form class="shorten-form" method="POST" onsubmit="send_url(event);return false"
+        action="{{ url_for('url_shortener') }}">
+    <input type="text"
+        name="url"
+        placeholder="https://example.com">
+    <button class="submit-btn" type="submit">Submit</button>
+</form>
+
+<div id="status-msg" style="margin-top: 10px; font-weight: bold;"></div>
+</div>
+{% endblock %}
