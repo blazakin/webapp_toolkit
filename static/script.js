@@ -8,9 +8,8 @@ var x = document.getElementById("myTopnav");
 }
 
 function toggle_dashboards() {
-var x = document.getElementById("myDashboards");
-    var dropdown = document.getElementById("dashboardDropdown");
-    dropdown.classList.toggle("show");
+    var x = document.getElementById("myDashboards");
+    x.classList.toggle("expand");
 }
 
 
