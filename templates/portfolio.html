@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Toolkit</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body >
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <div class="topnav" id="myTopnav">
-    <a href="/" class="nav_item active">Home</a>
+    <a href="/" class="nav_item">Home</a>
     <div class="dropdown" id="myDashboards">
     <button class="nav_item dropbtn" onclick="toggle_dashboards()">Dashboards
       <i class="fa fa-caret-down"></i>
@@ -21,14 +21,20 @@
         </div>
     </div>
     <a class="nav_item" href="/TaskApp">TaskApp</a>
-    <a class="nav_item" href="/Portfolio">Portfolio</a>
+    <a class="nav_item active" href="/Portfolio">Portfolio</a>
     <a class="nav_item" href="https://github.com/blazakin">Github</a>
     <a href="javascript:void(0);" class="nav_item icon" onclick="toggle_topnav_menu()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 
-<h1 id="home">Hello World!</h1>
+<h1>Publications: <a href="https://scholar.google.com/citations?user=-uMC1XAAAAAJ">See Google Scholar</a></h1>
+
+<h1>Presentations:</h1>
+
+<h3>&#x2022; Spring Poster symposium 2024: <a href="https://www.felsch.io/SPS24">Poster</a></h3>
+
+<h1>Projects: <a href="https://github.com/blazakin">See Github</a></h1>
 
 
 
