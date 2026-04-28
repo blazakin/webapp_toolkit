@@ -87,7 +87,8 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 100%;
     min-width: 160px;
     background-color: inherit;

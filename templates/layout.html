@@ -14,15 +14,23 @@
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <div class="topnav" id="myTopnav">
     <a href="/" class="nav_item" id="home">Home</a>
-    <div class="dropdown" id="myDashboards">
-    <button class="nav_item dropbtn" onclick="toggle_dashboards()">Dashboards
+    <div class="dropdown">
+    <button class="nav_item dropbtn" onclick="toggle_dashboards(event)">Dashboards
         <i class="fa fa-caret-down"></i>
     </button>
         <div class="dropdown-content">
             <a class="nav_item" id="ham" href="/Ham">Ham Dashboard</a>
         </div>
     </div>
-    <a class="nav_item" id="taskapp" href="/TaskApp">TaskApp</a>
+    <div class="dropdown">
+    <button class="nav_item dropbtn" onclick="toggle_dashboards(event)">Tools
+        <i class="fa fa-caret-down"></i>
+    </button>
+        <div class="dropdown-content">
+            <a class="nav_item" id="taskapp" href="/TaskApp">TaskApp</a>
+            <a class="nav_item" id="shorten" href="/S">URL Shorten</a>
+        </div>
+    </div>
     <a class="nav_item" id="portfolio" href="/Portfolio">Portfolio</a>
     <a class="nav_item" id="github" href="https://github.com/blazakin">Github</a>
     <a href="javascript:void(0);" class="nav_item icon" onclick="toggle_topnav_menu()">

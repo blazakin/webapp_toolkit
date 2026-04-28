@@ -7,9 +7,9 @@ var x = document.getElementById("myTopnav");
     }
 }
 
-function toggle_dashboards() {
+function toggle_dashboards(e) {
     var dashboards = document.getElementById("myDashboards");
-    dashboards.classList.toggle("expand");
+    (e.currentTarget).parentElement.classList.toggle("expand");
 }
 
 function active_page(page_name) {
