@@ -1,4 +1,8 @@
 from flask import Flask, request, render_template
+from dotenv import load_dotenv
+import os
+
+load_dotenv("./.env")
 
 app = Flask(__name__)
 
@@ -30,4 +34,5 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if 'DEV_DEPLOYMENT' in os.environ:
+        app.run(debug=True)
