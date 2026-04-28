@@ -27,27 +27,29 @@ function maximize_image(e) {
 
 // --- Functions for url shortener ---
 async function send_url(e) {
-    const url_form = e.currentTarget;
-    const url_input = url_form.querySelector('input[name="url"]');
+    const shorten_form = e.currentTarget;
+    const key_input = shorten_form.querySelector('input[name="key"]');
+    const url_input = shorten_form.querySelector('input[name="url"]');
     const status_msg = document.getElementById('status-msg');
     fetch('/S', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ "url": url_input.value}),
+        body: JSON.stringify({"key": key_input.value, "url": url_input.value}),
     })
     .then(response => response.json())
     .then(data => {
         if (data.status === "success") {
             status_msg.innerText = "Success! Your URL has been shortened.";
             status_msg.classList.add("success");
+            key_input.value = '';
             url_input.value = '';
-        } else if (data.status === "url_taken") {
-            statusMsg.innerText = "That URL is already taken. Try another!";
-            status_msg.classList.add("url_taken");
+        } else if (data.status === "key_taken") {
+            status_msg.innerText = "That key is already taken. Try another!";
+            status_msg.classList.add("key_taken");
         } else {
-            statusMsg.innerText = "An error occurred.";
+            status_msg.innerText = "An error occurred.";
             status_msg.classList.add("failure");
         }
         console.log("Success:", data);

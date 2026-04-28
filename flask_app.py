@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, jsonify, abort
-from url_shorten import get_url
+from url_shorten import get_url, save_url
 import os
 
 app = Flask(__name__)
@@ -21,9 +21,8 @@ def ham_dashboard():
 def task_app():
     return render_template('tools/task_app.html')
 
-@app.route('/S', methods=['GET', 'POST'])
-@app.route('/S<string:key>', methods=['GET', 'POST'])
-def url_shortener(key=None):
+@app.route('/S/<string:key>', methods=['GET', 'POST'])
+def url_expand(key=None):
     if request.method != 'POST':
         if key is None:
             return render_template('tools/url_shortener.html')
@@ -34,9 +33,30 @@ def url_shortener(key=None):
             except KeyError:
                 abort(404)
     else:
-        url = request.get_json()['url']
-        print(url)
-        return jsonify({"status": "success", "received": url}), 200
+        recv_key = request.get_json()['key']
+        recv_url = request.get_json()['url']
+        try:
+            save_url(recv_key, recv_url)
+            return jsonify({"status": "success", "received": recv_key}), 200
+        except KeyError:
+            return jsonify({"status": "key_taken", "received": recv_key}), 200
+        except ValueError:
+            return jsonify({"status": "too_many_keys", "received": recv_key}), 200
+        
+@app.route('/S', methods=['GET', 'POST'])
+def url_shortener():
+    if request.method == 'GET':
+        return render_template('tools/url_shortener.html')
+    else:
+        recv_key = request.get_json()['key']
+        recv_url = request.get_json()['url']
+        try:
+            save_url(recv_key, recv_url)
+            return jsonify({"status": "success", "received": recv_key}), 200
+        except KeyError:
+            return jsonify({"status": "key_taken", "received": recv_key}), 200
+        except ValueError:
+            return jsonify({"status": "too_many_keys", "received": recv_key}), 200
 
 
 

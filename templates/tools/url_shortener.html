@@ -11,6 +11,9 @@
 <form class="shorten-form" method="POST" onsubmit="send_url(event);return false"
         action="{{ url_for('url_shortener') }}">
     <input type="text"
+        name="key"
+        placeholder="example">
+    <input type="text"
         name="url"
         placeholder="https://example.com">
     <button class="submit-btn" type="submit">Submit</button>
