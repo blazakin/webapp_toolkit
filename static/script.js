@@ -8,8 +8,13 @@ var x = document.getElementById("myTopnav");
 }
 
 function toggle_dashboards() {
-    var x = document.getElementById("myDashboards");
-    x.classList.toggle("expand");
+    var dashboards = document.getElementById("myDashboards");
+    dashboards.classList.toggle("expand");
+}
+
+function active_page(page_name) {
+    var nav_pg_link = document.getElementById(page_name);
+    nav_pg_link.classList.add("active")
 }
 
 

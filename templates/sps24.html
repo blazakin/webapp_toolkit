@@ -1,196 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% extends "layout.html" %}
+{% block title %}SPS24{% endblock %}
+{% block head %}
+    {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='sps24_style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body >
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-<div class="topnav" id="myTopnav">
-    <a href="/" class="nav_item">Home</a>
-    <div class="dropdown" id="myDashboards">
-    <button class="nav_item dropbtn" onclick="toggle_dashboards()">Dashboards
-      <i class="fa fa-caret-down"></i>
-    </button>
-        <div class="dropdown-content">
-            <a class="nav_item" href="/Dashboards/Ham_Dashboard">Ham Dashboard</a>
-        </div>
-    </div>
-    <a class="nav_item" href="/TaskApp">TaskApp</a>
-    <a class="nav_item active" href="/Portfolio">Portfolio</a>
-    <a class="nav_item" href="https://github.com/blazakin">Github</a>
-    <a href="javascript:void(0);" class="nav_item icon" onclick="toggle_topnav_menu()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
+{% endblock %}
 
-  <h1 id="home">MCMC Algorithm to Predict Ice Formation in Arctic Soils</h1>
-  <p> &emsp; Below are some extra animations and figures of the simulation results. 
-    In addition, there is also the code used and the poster presented at OSU's 2024 Spring Poster Symposium</p>
+{% block content %}
+<h1 id="home">MCMC Algorithm to Predict Ice Formation in Arctic Soils</h1>
+<p> &emsp; Below are some extra animations and figures of the simulation results. 
+In addition, there is also the code used and the poster presented at OSU's 2024 Spring Poster Symposium
+</p>
   
-  <h1 id="videos">Videos</h1>
-  <p>&emsp; 
+<h1 id="videos">Videos</h1>
+<p>&emsp; 
     The videos below are animations of the Metropolis algorithm running on a 4 substance Potts model 
     with periodic boundary conditions. Black represents rock, Gray represents water, White represents ice, and Green represents air.
-  </p>
+</p>
 
-  <p> &emsp; 
+<p> &emsp; 
     The interaction strengths are:
     rr = 0; ww = 0; ii = 0; aa = .5; 
     rw = 0; ri = -1; wi = -1; ra = -1; wa = 0; ia = -1;
-  </p>
+</p>
     
-  <p> &emsp; 
+<p> &emsp; 
     The data for the rock in the models below is from Peszynska et al. (2021).
-  </p>
-  <div class="video-grid-container">
+</p>
+<div class="video-grid-container">
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/S1r2WyBPT90?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/S1r2WyBPT90?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtube.com/embed/HvsCebLbYqI?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://youtube.com/embed/HvsCebLbYqI?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtube.com/embed/baJfuudzY9A?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://youtube.com/embed/baJfuudzY9A?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtube.com/embed/zlAsEK_0CEw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://youtube.com/embed/zlAsEK_0CEw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtube.com/embed/JFs2jaoFfnw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://youtube.com/embed/JFs2jaoFfnw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-  </div>
+</div>
 
-  <h1 id="figures">Figures</h1>
+<h1 id="figures">Figures</h1>
   <div class="figure-grid-container">
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_1/images/A2glass_1_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_1/images/A2glass_1_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2glass_1/images/A2glass_1_Model_End.png">glass_1.png</a>
-      </object> 
+        </object> 
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_2/images/A2glass_2_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_2/images/A2glass_2_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2glass_2/images/A2glass_2_Model_End.png">glass_2.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_3/images/A2glass_3_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_3/images/A2glass_3_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2glass_3/images/A2glass_3_Model_End.png">glass_3.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_4/images/A2glass_4_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_4/images/A2glass_4_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2glass_4/images/A2glass_4_Model_End.png">glass_4.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_5/images/A2glass_5_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2glass_5/images/A2glass_5_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2glass_5/images/A2glass_5_Model_End.png">glass_5.png</a>
-      </object>
+        </object>
     </div>
-  </div>
+</div>
 
-  <div class="figure-grid-container">
+<div class="figure-grid-container">
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_1/images/A2proppants_1_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_1/images/A2proppants_1_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_1/images/A2proppants_1_Model_End.png">proppant_1.png</a>
-      </object> 
+        </object> 
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_2/images/A2proppants_2_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_2/images/A2proppants_2_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_2/images/A2proppants_2_Model_End.png">proppant_2.png</a>
-      </object> 
+        </object> 
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_3/images/A2proppants_3_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_3/images/A2proppants_3_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_3/images/A2proppants_3_Model_End.png">proppant_3.png</a>
-      </object> 
+        </object> 
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_4/images/A2proppants_4_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_4/images/A2proppants_4_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_4/images/A2proppants_4_Model_End.png">proppant_1.png</a>
-      </object> 
+        </object> 
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_5/images/A2proppants_5_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_5/images/A2proppants_5_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2proppants_5/images/A2proppants_5_Model_End.png">proppant_1.png</a>
-      </object> 
+        </object> 
     </div> 
-  </div>
+</div>
 
-  <div class="figure-grid-container">
+<div class="figure-grid-container">
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_1/images/A2soil1_1_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_1/images/A2soil1_1_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_1/images/A2soil1_1_Model_End.png">sandstone_1.png</a>
-      </object>
+        </object>
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_2/images/A2soil1_2_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_2/images/A2soil1_2_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_2/images/A2soil1_2_Model_End.png">sandstone_2.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_3/images/A2soil1_3_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_3/images/A2soil1_3_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_3/images/A2soil1_3_Model_End.png">sandstone_3.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_4/images/A2soil1_4_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_4/images/A2soil1_4_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_4/images/A2soil1_4_Model_End.png">sandstone_4.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_5/images/A2soil1_5_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_5/images/A2soil1_5_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil1_5/images/A2soil1_5_Model_End.png">sandstone_5.png</a>
-      </object> 
+        </object> 
     </div>
-  </div>
+</div>
 
-  <div class="figure-grid-container">
+<div class="figure-grid-container">
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_1/images/A2soil2_1_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_1/images/A2soil2_1_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_1/images/A2soil2_1_Model_End.png">sand_1.png</a>
-      </object>
+        </object>
     </div> 
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_2/images/A2soil2_2_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_2/images/A2soil2_2_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_2/images/A2soil2_2_Model_End.png">sand_2.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_3/images/A2soil2_3_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_3/images/A2soil2_3_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_3/images/A2soil2_3_Model_End.png">sand_3.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_4/images/A2soil2_4_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_4/images/A2soil2_4_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_4/images/A2soil2_4_Model_End.png">sand_4.png</a>
-      </object>
+        </object>
     </div>
     <div class="figure-container">
-      <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_5/images/A2soil2_5_Model_End.png">
+        <object type="image/png" data="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_5/images/A2soil2_5_Model_End.png">
         alt : <a href="https://www.felsch.io/SPS24_img/Run4_air/A2soil2_5/images/A2soil2_5_Model_End.png">sand_5.png</a>
-      </object> 
+        </object> 
     </div>
-  </div>
+</div>
 
 
-  <h1 id="code">Code</h1>
-  <p>  &emsp;
+<h1 id="code">Code</h1>
+<p>  &emsp;
     The code is hosted at the github repository: <a class="code" href="https://github.com/blazakin/URSA-Potts-Model">https://github.com/blazakin/URSA-Potts-Model</a>
-  </p>
+</p>
 
 
-  <h1 id="poster">Poster</h1>
-  <div class="poster">
+<h1 id="poster">Poster</h1>
+<div class="poster">
     <object type="application/pdf" data="https://www.felsch.io/SPS24_img/URSA_ForrestF.pdf">
-      View poster: <a href="https://www.felsch.io/SPS24_img/URSA_ForrestF.pdf">SPS24_FelschF.pdf</a>
+        View poster: <a href="https://www.felsch.io/SPS24_img/URSA_ForrestF.pdf">SPS24_FelschF.pdf</a>
     </object>
-  </div>
-  </body>
-</html>
+</div>
+{% endblock %}

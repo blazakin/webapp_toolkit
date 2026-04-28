@@ -1,113 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ham Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% extends "layout.html" %}
+{% block title %}Ham Dashboard{% endblock %}
+{% block head %}
+    {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='hamdash_style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body >
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-<div class="topnav" id="myTopnav">
-    <a href="/" class="nav_item">Home</a>
-    <div class="dropdown" id="myDashboards">
-    <button class="nav_item dropbtn" onclick="toggle_dashboards()">Dashboards
-      <i class="fa fa-caret-down"></i>
-    </button>
-        <div class="dropdown-content">
-            <a class="nav_item active" href="/Dashboards/Ham_Dashboard">Ham Dashboard</a>
-        </div>
-    </div>
-    <a class="nav_item" href="/TaskApp">TaskApp</a>
-    <a class="nav_item" href="/Portfolio">Portfolio</a>
-    <a class="nav_item" href="https://github.com/blazakin">Github</a>
-    <a href="javascript:void(0);" class="nav_item icon" onclick="toggle_topnav_menu()">
-        <i class="fa fa-bars"></i>
-    </a>
-</div>
+{% endblock %}
 
-
-  <div class="img_grid_container">
+{% block content %}
+<script>active_page("ham")</script>
+<div class="img_grid_container">
     <div class="img_container">
-      <div class="img_text">NOAA D-RAP</div>
-      <object type="image/png" data="https://services.swpc.noaa.gov/images/d-rap/global.png">
+        <div class="img_text">NOAA D-RAP</div>
+        <object type="image/png" data="https://services.swpc.noaa.gov/images/d-rap/global.png">
         alt : <a href="https://services.swpc.noaa.gov/images/d-rap/global.png">NOAA D-RAP</a>
-      </object> 
+        </object> 
     </div> 
     <div class="img_container">
-      <div class="img_text">USA Radar</div>
-      <object type="image/gif" data="https://radar.weather.gov/ridge/standard/CONUS_loop.gif">
+        <div class="img_text">USA Radar</div>
+        <object type="image/gif" data="https://radar.weather.gov/ridge/standard/CONUS_loop.gif">
         alt : <a href="https://radar.weather.gov/ridge/standard/CONUS_loop.gif">USA Radar</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">ISS Position</div>
-      <object type="image/png" data="https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544">
+        <div class="img_text">ISS Position</div>
+        <object type="image/png" data="https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544">
         alt : <a href="https://www.heavens-above.com/orbitdisplay.aspx?icon=iss&width=600&height=300&mode=M&satid=25544">ISS Position</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">Solar Disc</div>
-      <object type="image/png" data="https://services.swpc.noaa.gov/images/animations/suvi/primary/map/latest.png">
+        <div class="img_text">Solar Disc</div>
+        <object type="image/png" data="https://services.swpc.noaa.gov/images/animations/suvi/primary/map/latest.png">
         alt : <a href="https://services.swpc.noaa.gov/images/animations/suvi/primary/map/latest.png">Solar Disc</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">Satellite USA</div>
-      <object type="image/gif" data="https://cdn.star.nesdis.noaa.gov/GOES16/GLM/CONUS/EXTENT3/GOES16-CONUS-EXTENT3-625x375.gif">
+        <div class="img_text">Satellite USA</div>
+        <object type="image/gif" data="https://cdn.star.nesdis.noaa.gov/GOES16/GLM/CONUS/EXTENT3/GOES16-CONUS-EXTENT3-625x375.gif">
         alt : <a href="https://cdn.star.nesdis.noaa.gov/GOES16/GLM/CONUS/EXTENT3/GOES16-CONUS-EXTENT3-625x375.gif">Satellite USA</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">MUF Map</div>
-      <object type="image/svg+xml" data="https://prop.kc2g.com/renders/current/mufd-normal-now.svg">
+        <div class="img_text">MUF Map</div>
+        <object type="image/svg+xml" data="https://prop.kc2g.com/renders/current/mufd-normal-now.svg">
         alt : <a href="https://prop.kc2g.com/renders/current/mufd-normal-now.svg">MUF Map</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">USA Lightning</div>
-      <object type="image/gif" data="https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa">
+        <div class="img_text">USA Lightning</div>
+        <object type="image/gif" data="https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa">
         alt : <a href="https://images.lightningmaps.org/blitzortung/america/index.php?animation=usa">USA Lightning</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">USA Forecast</div>
-      <object type="image/gif" data="https://www.wpc.ncep.noaa.gov/noaa/noaa.gif">
+        <div class="img_text">USA Forecast</div>
+        <object type="image/gif" data="https://www.wpc.ncep.noaa.gov/noaa/noaa.gif">
         alt : <a href="https://www.wpc.ncep.noaa.gov/noaa/noaa.gif">USA Forecast</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">NVIS MUF</div>
-      <object type="image/png" data="https://www.sws.bom.gov.au/Images/HF%20Systems/Global%20HF/Ionospheric%20Map/West/fof2_maps.png">
+        <div class="img_text">NVIS MUF</div>
+        <object type="image/png" data="https://www.sws.bom.gov.au/Images/HF%20Systems/Global%20HF/Ionospheric%20Map/West/fof2_maps.png">
         alt : <a href="https://www.sws.bom.gov.au/Images/HF%20Systems/Global%20HF/Ionospheric%20Map/West/fof2_maps.png">NVIS MUF</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">Tropo Ducting</div>
-      <object type="image/png" data="https://www.dxinfocentre.com/tr_map/fcst/wam006.png">
+        <div class="img_text">Tropo Ducting</div>
+        <object type="image/png" data="https://www.dxinfocentre.com/tr_map/fcst/wam006.png">
         alt : <a href="https://www.dxinfocentre.com/tr_map/fcst/wam006.png?v20260427">Tropo Ducting</a>
-      </object>
+        </object>
     </div>
     <div class="img_container">
-      <div class="img_text">HF Propogation</div>
-      <object type="image/gif" data="https://www.hamqsl.com/solar101vhf.php">
+        <div class="img_text">HF Propogation</div>
+        <object type="image/gif" data="https://www.hamqsl.com/solar101vhf.php">
         <img src="https://www.hamqsl.com/solar101vhf.php" alt="HF Propogation">
-      </object>
+        </object>
       
     </div>
     <div class="img_container">
-      <div class="img_text">Grey Line Map</div>
-      <object type="image/gif" data="https://www.timeanddate.com/scripts/sunmap.php?iso=now">
+        <div class="img_text">Grey Line Map</div>
+        <object type="image/gif" data="https://www.timeanddate.com/scripts/sunmap.php?iso=now">
         alt : <a href="https://www.timeanddate.com/scripts/sunmap.php?iso=now">Grey Line Map</a>
-      </object>
+        </object>
     </div>
-  </div>
-
-
-
-
-</body>
-</html>
+</div>
+{% endblock %}

@@ -19,7 +19,7 @@ def portfolio():
 def sps24():
     return render_template('sps24.html')
 
-@app.route('/Dashboards/Ham_Dashboard', methods=['GET'])
+@app.route('/Ham', methods=['GET'])
 def ham_dashboard():
     return render_template('/dashboards/ham_dashboard.html')
 
