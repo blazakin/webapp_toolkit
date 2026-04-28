@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta permalink: />
     <title>Toolkit</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  </head>
-  <body >
-	<script src="{{ url_for('static', filename='index.js') }}"></script>
-  <div class="topnav", id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#videos">Dashboards</a>
-    <a href="#figures">Figures</a>
-    <a href="#code">Code</a>
-    <a href="#poster">Poster</a>
-    <a href="javascript:void(0);" class="icon" onclick="togglemenu()">
-      <i class="fa fa-bars"></i>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<div class="topnav" id="myTopnav">
+    <a href="#home" class="nav_item active">Home</a>
+    <div class="dropdown" id="myDashboards">
+    <button class="nav_item dropbtn" onclick="">Dashboards
+      <i class="fa fa-caret-down"></i>
+    </button>
+        <div class="dropdown-content">
+            <a class="nav_item" href="#">Ham Dashboard</a>
+            <a class="nav_item" href="#">Link 2</a>
+            <a class="nav_item" href="#">Link 3</a>
+        </div>
+    </div>
+    <a class="nav_item" href="/TaskApp">TaskApp</a>
+    <a class="nav_item" href="https://github.com/blazakin">Github</a>
+    <a href="javascript:void(0);" class="icon" onclick="toggle_topnav_menu()">
+        <i class="fa fa-bars"></i>
     </a>
-  </div>
+</div>
 
-  <h1 id="home">Hello World!</h1>
+<h1 id="home">Hello World!</h1>
 
-  
 
-  </body>
+
+</body>
 </html>

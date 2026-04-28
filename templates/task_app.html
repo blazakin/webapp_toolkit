@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta permalink: TaskApp/>
+        <title>TaskApp</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body >
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <div class="topnav", id="myTopnav">
+        <a href="/">Home</a>
+        <a href="#videos">Dashboards</a>
+        <a href="/TaskApp" class="active">TaskApp</a>
+        <a href="https://github.com/blazakin">Github</a>
+        <a href="javascript:void(0);" class="icon" onclick="togglemenu()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <h1 id="home">Hello World!</h1>
+    <button onClick="test_open2()">
+    Button Text
+    </button>  
+  </body>
+</html>

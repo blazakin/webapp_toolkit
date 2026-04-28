@@ -20,6 +20,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/TaskApp', methods=['GET'])
+def task_app():
+    return render_template('task_app.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
