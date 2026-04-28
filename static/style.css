@@ -1,3 +1,4 @@
+  /* ------ Basic Style ------ */
   body {
     background-color: #333;
   }
@@ -13,8 +14,13 @@
     color: #7070ff;
   }
 
+  .indented {
+    padding-left: 40px; /* Adjust this to match your desired tab width */
+  }
 
 
+
+  /* ------ Topnav Style ------ */
 /* Add a black background color to the top navigation */
   .topnav {
     background-color: #222;

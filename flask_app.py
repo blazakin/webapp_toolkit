@@ -28,6 +28,10 @@ def task_app():
 def portfolio():
     return render_template('portfolio.html')
 
+@app.route('/SPS24', methods=['GET'])
+def sps24():
+    return render_template('sps24.html')
+
 @app.route('/Dashboards/Ham_Dashboard', methods=['GET'])
 def ham_dashboard():
     return render_template('/dashboards/ham_dashboard.html')
