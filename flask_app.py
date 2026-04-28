@@ -24,13 +24,5 @@ def index():
 def task_app():
     return render_template('task_app.html')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        # name = bleach.clean(request.form['username'])
-        name = request.form['username']
-        return f"Hello {name}, POST request received"
-    return render_template('name.html')
-
 if __name__ == '__main__':
     app.run(debug=True)
