@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, jsonify, abort
 from url_shorten import get_url, save_url
+from qr_code import make_qr
 import os
 
 app = Flask(__name__)
@@ -63,10 +64,15 @@ def url_shortener():
             return jsonify({"status": "too_many_keys", "received": recv_key}), 200
 
 
-@app.route('/qr', methods=['GET'])
-@app.route('/QR', methods=['GET'])
+@app.route('/qr', methods=['GET', 'POST'])
+@app.route('/QR', methods=['GET', 'POST'])
 def qr_code():
-    return render_template('tools/qr_code_gen.html')
+    if request.method == 'GET':
+        return render_template('tools/qr_code_gen.html')
+    else:
+        recv_data = request.get_json()['qr_data']
+        qr_data = make_qr(recv_data)
+        return jsonify({"status": "success", "qr_data": qr_data}), 200
 
 
 # --- Portfolio Pages ---

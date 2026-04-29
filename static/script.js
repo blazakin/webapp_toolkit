@@ -59,6 +59,37 @@ async function send_url(e) {
     });
 }
 
+// --- Functions for qr code generator ---
+async function send_qr_data(e) {
+    const qr_form = e.currentTarget;
+    const data_input = qr_form.querySelector('input[name="qr_data"]');
+    const status_msg = document.getElementById('status-msg');
+    const qr_code_img = document.getElementById('qr-code');
+    fetch('/QR', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"qr_data": data_input.value}),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            status_msg.innerText = "Success! Your QR Code has been generated.";
+            status_msg.classList.add("success");
+            qr_code_img.src = "data:image/png;base64," + data.qr_data
+            data_input.value = '';
+        } else {
+            status_msg.innerText = "An error occurred.";
+            status_msg.classList.add("failure");
+        }
+        console.log("Success:");
+    })
+    .catch(error => {
+                console.error('Error submitting data:', error);
+    });
+}
+
 
 // Will give browser a fit first time the user does this due to spam protection
 function test_open2() {

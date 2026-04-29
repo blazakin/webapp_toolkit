@@ -2,9 +2,22 @@
 {% block title %}QR Code Gen{% endblock %}
 {% block head %}
     {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='input_style.css') }}">
 {% endblock %}
 
 {% block content %}
 <script>active_page("qr_code")</script>
-<h1>Coming Soon</h1>
+<div class="form-container">
+<form class="form" method="POST" onsubmit="send_qr_data(event);return false"
+        action="{{ url_for('qr_code') }}">
+    <input type="text"
+        name="qr_data"
+        placeholder="https://example.com">
+    <button class="submit-btn" type="submit">Submit</button>
+</form>
+
+<img id="qr-code" src="">
+
+<div id="status-msg" style="margin-top: 10px; font-weight: bold;"></div>
+</div>
 {% endblock %}
