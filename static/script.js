@@ -85,11 +85,13 @@ async function send_qr_data(e) {
     .then(data => {
         if (data.status === "success") {
             status_msg.innerText = "Success! Your QR Code has been generated.";
+            status_msg.classList.remove("failure");
             status_msg.classList.add("success");
             qr_code_img.src = "data:image/png;base64," + data.qr_data
             data_input.value = '';
         } else {
             status_msg.innerText = "An error occurred.";
+            status_msg.classList.remove("success");
             status_msg.classList.add("failure");
         }
         console.log("Success:");
