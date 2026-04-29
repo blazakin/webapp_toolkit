@@ -71,7 +71,8 @@ def qr_code():
         return render_template('tools/qr_code_gen.html')
     else:
         recv_data = request.get_json()['qr_data']
-        qr_data = make_qr(recv_data)
+        add_shorten = request.get_json()['add_shorten']
+        qr_data = make_qr(recv_data, add_shorten, request.host)
         return jsonify({"status": "success", "qr_data": qr_data}), 200
 
 
