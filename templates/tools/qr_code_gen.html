@@ -8,6 +8,7 @@
 {% block content %}
 <script>active_page("qr_code")</script>
 <div class="form-container">
+<h1>QR Code Generator</h1>
 <form class="form" method="POST" onsubmit="send_qr_data(event);return false"
         action="{{ url_for('qr_code') }}">
     <input type="text"
