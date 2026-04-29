@@ -37,7 +37,9 @@ def make_qr(data, add_shorten=False, domain=None):
 
     # Add shortened url to image
     if key is not None:
-        shortened_url = domain + "/S/" + key
+        # TODO return to domain once domain hosting has shorter or custom url
+        # shortened_url = domain + "/S/" + key
+        shortened_url =  "blazakin.com/S/" + key
         # Convert to gray scale image so the text looks better
         img = img.convert("L")
         width, height = img.size
