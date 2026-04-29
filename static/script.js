@@ -42,14 +42,20 @@ async function send_url(e) {
     .then(data => {
         if (data.status === "success") {
             status_msg.innerText = "Success! Your URL has been shortened.";
+            status_msg.classList.remove("key_taken");
+            status_msg.classList.remove("failure");
             status_msg.classList.add("success");
             key_input.value = '';
             url_input.value = '';
         } else if (data.status === "key_taken") {
             status_msg.innerText = "That key is already taken. Try another!";
+            status_msg.classList.remove("success");
+            status_msg.classList.remove("failure");
             status_msg.classList.add("key_taken");
         } else {
             status_msg.innerText = "An error occurred.";
+            status_msg.classList.remove("success");
+            status_msg.classList.remove("key_taken");
             status_msg.classList.add("failure");
         }
         console.log("Success:", data);
