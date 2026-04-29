@@ -8,15 +8,21 @@
 {% block content %}
 <script>active_page("qr_code")</script>
 <div class="form-container">
+<h1>QR Code Generator</h1>
 <form class="form" method="POST" onsubmit="send_qr_data(event);return false"
         action="{{ url_for('qr_code') }}">
     <input type="text"
         name="qr_data"
         placeholder="https://example.com">
+    <label>
+        <input type="checkbox"
+            name="add_shorten">
+        Add shortened url
+    </label>
     <button class="submit-btn" type="submit">Submit</button>
 </form>
 
-<img id="qr-code" src="">
+<img id="qr-code" onclick="maximize_image(event)" src="">
 
 <div id="status-msg" style="margin-top: 10px; font-weight: bold;"></div>
 </div>

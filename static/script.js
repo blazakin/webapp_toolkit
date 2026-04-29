@@ -63,14 +63,17 @@ async function send_url(e) {
 async function send_qr_data(e) {
     const qr_form = e.currentTarget;
     const data_input = qr_form.querySelector('input[name="qr_data"]');
+    const add_shorten = qr_form.querySelector('input[name="add_shorten"]');
     const status_msg = document.getElementById('status-msg');
     const qr_code_img = document.getElementById('qr-code');
+
+
     fetch('/QR', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({"qr_data": data_input.value}),
+        body: JSON.stringify({"qr_data": data_input.value, "add_shorten": add_shorten.checked}),
     })
     .then(response => response.json())
     .then(data => {
