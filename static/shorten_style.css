@@ -53,3 +53,9 @@ input[type="text"] {
 .failure {
     color: red;
 }
+
+@media screen and (max-width: 600px) {
+    input[type="text"] {
+        max-width: 70vw;
+    }
+}
