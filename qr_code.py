@@ -39,7 +39,7 @@ def make_qr(data, add_shorten=False, domain=None):
     if key is not None:
         # TODO return to domain once domain hosting has shorter or custom url
         # shortened_url = domain + "/S/" + key
-        shortened_url =  "blazakin.com/S/" + key
+        shortened_url =  "w7eg.net/S/" + key
         # Convert to gray scale image so the text looks better
         img = img.convert("L")
         width, height = img.size

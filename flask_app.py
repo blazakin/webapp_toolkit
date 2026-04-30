@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, jsonify, abort
 from url_shorten import get_url, save_url
 from qr_code import make_qr
+import bleach
 import os
 
 app = Flask(__name__)
@@ -24,28 +25,17 @@ def ham_dashboard():
 def task_app():
     return render_template('tools/task_app.html')
 
-@app.route('/s/<string:key>', methods=['GET', 'POST'])
-@app.route('/S/<string:key>', methods=['GET', 'POST'])
+@app.route('/s/<string:key>', methods=['GET'])
+@app.route('/S/<string:key>', methods=['GET'])
 def url_expand(key=None):
-    if request.method != 'POST':
-        if key is None:
-            return render_template('tools/url_shortener.html')
-        else:
-            try:
-                new_url = get_url(key)
-                return redirect(new_url)
-            except KeyError:
-                abort(404)
+    if key is None:
+        return render_template('tools/url_shortener.html')
     else:
-        recv_key = request.get_json()['key']
-        recv_url = request.get_json()['url']
         try:
-            save_url(recv_key, recv_url)
-            return jsonify({"status": "success", "received": recv_key}), 200
+            new_url = get_url(key)
+            return redirect(new_url)
         except KeyError:
-            return jsonify({"status": "key_taken", "received": recv_key}), 200
-        except ValueError:
-            return jsonify({"status": "too_many_keys", "received": recv_key}), 200
+            abort(404)
 
 @app.route('/s', methods=['GET', 'POST'])        
 @app.route('/S', methods=['GET', 'POST'])
@@ -53,8 +43,8 @@ def url_shortener():
     if request.method == 'GET':
         return render_template('tools/url_shortener.html')
     else:
-        recv_key = request.get_json()['key']
-        recv_url = request.get_json()['url']
+        recv_key = bleach.clean(request.get_json()['key'])
+        recv_url = bleach.clean(request.get_json()['url'])
         try:
             save_url(recv_key, recv_url)
             return jsonify({"status": "success", "received": recv_key}), 200
@@ -70,8 +60,10 @@ def qr_code():
     if request.method == 'GET':
         return render_template('tools/qr_code_gen.html')
     else:
-        recv_data = request.get_json()['qr_data']
+        recv_data = bleach.clean(request.get_json()['qr_data'])
         add_shorten = request.get_json()['add_shorten']
+        if not isinstance(add_shorten, bool):
+            return jsonify({"status": "failure"}), 200
         qr_data = make_qr(recv_data, add_shorten, request.host)
         return jsonify({"status": "success", "qr_data": qr_data}), 200
 
